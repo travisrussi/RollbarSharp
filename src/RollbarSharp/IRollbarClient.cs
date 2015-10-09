@@ -33,7 +33,7 @@ namespace RollbarSharp
         /// <param name="title"></param>
         /// <param name="modelAction"></param>
         /// <param name="userParam"></param>
-        Task SendCriticalException(Exception ex, string title = null, Action<DataModel> modelAction = null, object userParam = null);
+        Task SendCriticalException(Exception ex, string title = null, Action<DataModel> modelAction = null, object userParam = null, IDictionary<string, string> requestSession = null, PersonModel person = null);
 
         /// <summary>
         /// Sends an exception using the "error" level
@@ -42,7 +42,7 @@ namespace RollbarSharp
         /// <param name="title"></param>
         /// <param name="modelAction"></param>
         /// <param name="userParam"></param>
-        Task SendErrorException(Exception ex, string title = null, Action<DataModel> modelAction = null, object userParam = null);
+        Task SendErrorException(Exception ex, string title = null, Action<DataModel> modelAction = null, object userParam = null, IDictionary<string, string> requestSession = null, PersonModel person = null);
 
         /// <summary>
         /// Sents an exception using the "warning" level
@@ -51,7 +51,7 @@ namespace RollbarSharp
         /// <param name="title"></param>
         /// <param name="modelAction"></param>
         /// <param name="userParam"></param>
-        Task SendWarningException(Exception ex, string title = null, Action<DataModel> modelAction = null, object userParam = null);
+        Task SendWarningException(Exception ex, string title = null, Action<DataModel> modelAction = null, object userParam = null, IDictionary<string, string> requestSession = null, PersonModel person = null);
 
         /// <summary>
         /// Sends the given <see cref="Exception"/> to Rollbar including
@@ -62,7 +62,7 @@ namespace RollbarSharp
         /// <param name="level">Default is "error". "critical" and "warning" may also make sense to use.</param>
         /// <param name="modelAction"></param>
         /// <param name="userParam"></param>
-        Task SendException(Exception ex, string title = null, string level = "error", Action<DataModel> modelAction = null, object userParam = null);
+        Task SendException(Exception ex, string title = null, string level = "error", Action<DataModel> modelAction = null, object userParam = null, IDictionary<string, string> requestSession = null, PersonModel person = null);
 
         /// <summary>
         /// Sends a text notice using the "critical" level
@@ -71,7 +71,7 @@ namespace RollbarSharp
         /// <param name="customData"></param>
         /// <param name="modelAction"></param>
         /// <param name="userParam"></param>
-        Task SendCriticalMessage(string message, IDictionary<string, object> customData = null, Action<DataModel> modelAction = null, object userParam = null);
+        Task SendCriticalMessage(string message, IDictionary<string, object> customData = null, Action<DataModel> modelAction = null, object userParam = null, IDictionary<string, string> requestSession = null, PersonModel person = null);
 
         /// <summary>
         /// Sents a text notice using the "error" level
@@ -80,7 +80,7 @@ namespace RollbarSharp
         /// <param name="customData"></param>
         /// <param name="modelAction"></param>
         /// <param name="userParam"></param>
-        Task SendErrorMessage(string message, IDictionary<string, object> customData = null, Action<DataModel> modelAction = null, object userParam = null);
+        Task SendErrorMessage(string message, IDictionary<string, object> customData = null, Action<DataModel> modelAction = null, object userParam = null, IDictionary<string, string> requestSession = null, PersonModel person = null);
 
         /// <summary>
         /// Sends a text notice using the "warning" level
@@ -89,7 +89,7 @@ namespace RollbarSharp
         /// <param name="customData"></param>
         /// <param name="modelAction"></param>
         /// <param name="userParam"></param>
-        Task SendWarningMessage(string message, IDictionary<string, object> customData = null, Action<DataModel> modelAction = null, object userParam = null);
+        Task SendWarningMessage(string message, IDictionary<string, object> customData = null, Action<DataModel> modelAction = null, object userParam = null, IDictionary<string, string> requestSession = null, PersonModel person = null);
 
         /// <summary>
         /// Sends a text notice using the "info" level
@@ -98,7 +98,7 @@ namespace RollbarSharp
         /// <param name="customData"></param>
         /// <param name="modelAction"></param>
         /// <param name="userParam"></param>
-        Task SendInfoMessage(string message, IDictionary<string, object> customData = null, Action<DataModel> modelAction = null, object userParam = null);
+        Task SendInfoMessage(string message, IDictionary<string, object> customData = null, Action<DataModel> modelAction = null, object userParam = null, IDictionary<string, string> requestSession = null, PersonModel person = null);
 
         /// <summary>
         /// Sends a text notice using the "debug" level
@@ -107,7 +107,7 @@ namespace RollbarSharp
         /// <param name="customData"></param>
         /// <param name="modelAction"></param>
         /// <param name="userParam"></param>
-        Task SendDebugMessage(string message, IDictionary<string, object> customData = null, Action<DataModel> modelAction = null, object userParam = null);
+        Task SendDebugMessage(string message, IDictionary<string, object> customData = null, Action<DataModel> modelAction = null, object userParam = null, IDictionary<string, string> requestSession = null, PersonModel person = null);
 
         /// <summary>
         /// Sents a text notice using the given level of severity
@@ -117,7 +117,7 @@ namespace RollbarSharp
         /// <param name="customData"></param>
         /// <param name="modelAction"></param>
         /// <param name="userParam"></param>
-        Task SendMessage(string message, string level, IDictionary<string, object> customData = null, Action<DataModel> modelAction = null, object userParam = null);
+        Task SendMessage(string message, string level, IDictionary<string, object> customData = null, Action<DataModel> modelAction = null, object userParam = null, IDictionary<string, string> requestSession = null, PersonModel person = null);
 
         Task Send(DataModel data, object userParam);
 

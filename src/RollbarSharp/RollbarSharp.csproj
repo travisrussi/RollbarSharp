@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RollbarSharp</RootNamespace>
-    <AssemblyName>RollbarSharp</AssemblyName>
+    <AssemblyName>RollbarSharp.TravisRussi</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

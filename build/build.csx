@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Xml.Linq;
 using System.Diagnostics;
 
-var assembly = Assembly.LoadFrom("..\\src\\RollbarSharp\\bin\\Debug\\RollbarSharp.dll");
+var assembly = Assembly.LoadFrom("..\\src\\RollbarSharp\\bin\\Debug\\RollbarSharp.TravisRussi.dll");
 var version = assembly.GetName().Version.ToString();
 Console.WriteLine("Packing version {0}", version);
 
@@ -13,7 +13,7 @@ Console.WriteLine("nupkg created");
 
 Console.WriteLine("What's your Api Key?");
 var apiKey = Console.ReadLine();
-var arguments = string.Format("push RollbarSharp.{0}.nupkg -ApiKey {1}", version, apiKey);
+var arguments = string.Format("push RollbarSharp.TravisRussi.{0}.nupkg -ApiKey {1}", version, apiKey);
 Console.WriteLine("Executing nuget {0}", arguments);
 pInfo = new ProcessStartInfo("nuget", arguments) { WorkingDirectory = @"..\src\RollbarSharp\" };
 Console.WriteLine("Pushing new version");

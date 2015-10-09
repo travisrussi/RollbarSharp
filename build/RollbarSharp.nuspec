@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
-        <id>RollbarSharp</id>
+        <id>RollbarSharp.TravisRussi</id>
         <version>0.3.3.1</version>
-        <title>RollbarSharp</title>
+        <title>RollbarSharp.TravisRussi</title>
         <authors>Michael Roach,Patrick Wyatt,Alberto Monteiro,richardversluis, Travis Russi</authors>
         <owners>Michael Roach</owners>
         <licenseUrl>https://github.com/travisrussi/RollbarSharp/blob/master/LICENSE.txt</licenseUrl>
@@ -23,6 +23,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\src\RollbarSharp\bin\Debug\RollbarSharp.dll" target="lib\RollbarSharp.dll" />
+        <file src="..\src\RollbarSharp\bin\Debug\RollbarSharp.TravisRussi.dll" target="lib\RollbarSharp.TravisRussi.dll" />
     </files>
 </package>
