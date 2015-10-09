@@ -26,3 +26,6 @@ dotnet.watchr.rb
 build/publish/lib/*/*.dll
 build/*.nupkg
 build/publish/*.nuspec
+src/.vs
+src/Backup
+src/UpgradeLog.htm

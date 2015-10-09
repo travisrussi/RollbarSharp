@@ -22,10 +22,10 @@ namespace RollbarSharp.Builders
             Configuration = configuration;
         }
 
-        public DataModel CreateExceptionNotice(Exception ex, string message = null, string level = "error")
+        public DataModel CreateExceptionNotice(Exception ex, string message = null, string level = "error", IDictionary<string, string> requestSession = null, PersonModel person = null)
         {
             var body = BodyModelBuilder.CreateExceptionBody(ex);
-            var model = Create(level, body);
+            var model = Create(level, body, requestSession, person);
 
             //merge exception data dictionaries to list of keyValues pairs
             var keyValuePairs = body.TraceChain.Where(tm => tm.Exception.Data != null).SelectMany(tm => tm.Exception.Data);
@@ -41,9 +41,9 @@ namespace RollbarSharp.Builders
             return model;
         }
 
-        public DataModel CreateMessageNotice(string message, string level = "info", IDictionary<string, object> customData = null)
+        public DataModel CreateMessageNotice(string message, string level = "info", IDictionary<string, object> customData = null, IDictionary<string, string> requestSession = null, PersonModel person = null)
         {
-            return Create(level, BodyModelBuilder.CreateMessageBody(message, customData));
+            return Create(level, BodyModelBuilder.CreateMessageBody(message, customData), requestSession, person);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace RollbarSharp.Builders
         /// <param name="level"></param>
         /// <param name="body"></param>
         /// <returns></returns>
-        protected DataModel Create(string level, BodyModel body)
+        protected DataModel Create(string level, BodyModel body, IDictionary<string, string> requestSession, PersonModel person)
         {
             var model = new DataModel(level, body);
 
@@ -79,6 +79,21 @@ namespace RollbarSharp.Builders
                 model.Request = RequestModelBuilder.CreateFromHttpRequest(currentHttpRequest, HttpContext.Current.Session, Configuration.ScrubParams);
                 model.Server = ServerModelBuilder.CreateFromHttpRequest(currentHttpRequest);
                 model.Person = PersonModelBuilder.CreateFromHttpRequest(currentHttpRequest);                
+            }
+
+            if (requestSession != null)
+            {
+                foreach(var key in requestSession.Keys)
+                {
+                    model.Request.Session[key] = requestSession[key];
+                }
+            }
+
+            if (person != null)
+            {
+                model.Person.Email = person.Email ?? model.Person.Email;
+                model.Person.Id = person.Id ?? model.Person.Id;
+                model.Person.Username = person.Username ?? model.Person.Username;
             }
 
             model.Server.GitSha = Configuration.GitSha;
